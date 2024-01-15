@@ -35,13 +35,30 @@ class TopNews(models.Model):
     title = models.CharField(max_length=1000, verbose_name='Наименование')
     source = models.CharField(max_length=200, verbose_name='Источник')
     author = models.CharField(max_length=200, default='Неизветный автор', verbose_name='Автор')
-    topic = models.CharField(max_length=50, verbose_name='Тема')
-    country = models.CharField(max_length=100, verbose_name='Страна')
+    topic = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name='Тема')
+    #country = models.CharField(max_length=50, verbose_name='Страны')
+    country = models.ForeignKey(Countries, on_delete=models.CASCADE, verbose_name='Страна')
     description = models.CharField(max_length=2000, default='Нет описания', verbose_name='Описание')
-    url = models.CharField(max_length=2000, verbose_name='Ссылка')
+    url = models.URLField(max_length=200, verbose_name='Ссылка')
 
     def __str__(self):
         return self.title
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
+
+class TopNewsTranslated(models.Model):
+    titleRus = models.CharField(max_length=1000, default='Нет перевода', verbose_name='Новость на русском')
+    titleOrig = models.CharField(max_length=1000, verbose_name='Новость в оригинале')
+    source = models.CharField(max_length=200, verbose_name='Источник')
+    author = models.CharField(max_length=200, default='Неизветный автор', verbose_name='Автор')
+    topic = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name='Тема')
+    country = models.ForeignKey(Countries, on_delete=models.CASCADE, verbose_name='Страна')
+    description = models.CharField(max_length=2000, default='Нет описания', verbose_name='Описание')
+    url = models.URLField(max_length=200, verbose_name='Ссылка')
+
+    def __str__(self):
+        return self.titleRus
+    class Meta:
+        verbose_name = 'Новость в переводе'
+        verbose_name_plural = 'Новости в переводе'

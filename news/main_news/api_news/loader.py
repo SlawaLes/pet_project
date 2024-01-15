@@ -9,11 +9,10 @@ def headlines_url(**kwargs):
         result += 'apiKey=25e5bde914644c75bfd59d97c616cef0'
         return result
 
-url = headlines_url(country='us', category='sports', pageSize=100)
 
-data = requests.get(url).json()
-data['country'] = 'us'
-data['category'] = 'sports'
-
-if __name__=='__main__':
-        print(data)
+def news_load(country='ru', category='sports', pageSize=20):
+        url = headlines_url(country=country, category=category, pageSize=pageSize)
+        data = requests.get(url).json()
+        data['country'] = country
+        data['category'] = category
+        return data
