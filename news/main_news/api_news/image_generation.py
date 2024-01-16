@@ -1,6 +1,10 @@
 import json
 import time
 import requests
+import base64
+from django.core.files.base import ContentFile
+import datetime
+
 
 class Text2ImageAPI:
 
@@ -49,8 +53,11 @@ class Text2ImageAPI:
 
 api = Text2ImageAPI('https://api-key.fusionbrain.ai/', '8DA6C39A53FCA582701FC2ABCDA8CBD7', '1B1E6645F811408CC9A2E70870CB6DF7')
 model_id = api.get_model()
-uuid = api.generate("Толстый гном на голове у пирата", model_id)
-images = api.check_generation(uuid)
-print(images)
 
-#Не забудьте указать именно ваш YOUR_KEY и YOUR_SECRET.
+def generator(text):
+    uuid = api.generate(text, model_id)
+    images = api.check_generation(uuid, 10, 10)
+    img = images[0]
+    name = f'{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}.png'
+    return ContentFile(base64.b64decode(img), name=name)
+
