@@ -6,3 +6,5 @@ pandas
 openpyxl
 Pillow
 psycopg2-binary
+celery[resi]==5.2.7
+Redis

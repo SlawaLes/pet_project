@@ -38,7 +38,7 @@ class TopNews(models.Model):
     #country = models.CharField(max_length=50, verbose_name='Страны')
     country = models.ForeignKey(Countries, on_delete=models.CASCADE, verbose_name='Страна')
     description = models.CharField(max_length=2000, default='Нет описания', verbose_name='Описание')
-    url = models.URLField(max_length=200, verbose_name='Ссылка')
+    url = models.URLField(max_length=1700, verbose_name='Ссылка')
 
     def __str__(self):
         return self.title
@@ -54,7 +54,7 @@ class TopNewsTranslated(models.Model):
     topic = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name='Тема')
     country = models.ForeignKey(Countries, on_delete=models.CASCADE, verbose_name='Страна')
     description = models.CharField(max_length=2000, default='Нет описания', verbose_name='Описание')
-    url = models.URLField(max_length=200, verbose_name='Ссылка')
+    url = models.URLField(max_length=1700, verbose_name='Ссылка')
 
     def __str__(self):
         return self.titleRus
@@ -84,7 +84,7 @@ class TopNewsImages(models.Model):
     topic = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name='Тема')
     country = models.ForeignKey(Countries, on_delete=models.CASCADE, verbose_name='Страна')
     description = models.CharField(max_length=2000, default='Нет описания', verbose_name='Описание')
-    url = models.URLField(max_length=200, verbose_name='Ссылка')
+    url = models.URLField(max_length=1700, verbose_name='Ссылка')
 
     def __str__(self):
         return self.titleRus
