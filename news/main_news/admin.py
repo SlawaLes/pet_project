@@ -5,7 +5,6 @@ from main_news.api_news.parser import pars
 from main_news.api_news.translator_yan import translation
 from main_news.api_news.image_generation import generator
 
-from news.settings import MEDIA_ROOT
 
 
 class CountryAdmin(admin.ModelAdmin):

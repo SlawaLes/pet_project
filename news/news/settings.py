@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main_news',
+    'pulse_posts',
+    'calendar_holidays',
 ]
 
 MIDDLEWARE = [

@@ -60,4 +60,3 @@ def generator(text):
     img = images[0]
     name = f'{datetime.datetime.now().strftime("%Y%m%d%H%M%S")}.png'
     return ContentFile(base64.b64decode(img), name=name)
-
