@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %} News Loader {% endblock %}
+
+{% block branding %}
+<div style="display: flex">
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">Главная</a>
+    </h1>
+    <h1>
+        <a href="{% url 'pulse_posts:load' %}">Загрузить биржевые новости</a>
+    </h1>
+</div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

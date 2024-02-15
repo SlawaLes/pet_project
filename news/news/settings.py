@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+from os.path import normpath
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,8 +30,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+ADMIN_SITES = ("admin", )
 # Application definition
+
+ADMIN_URL = "admin/"
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,7 +63,7 @@ ROOT_URLCONF = 'news.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

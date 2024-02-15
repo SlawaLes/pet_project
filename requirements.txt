@@ -11,3 +11,4 @@ Redis
 tpulse
 httpx
 numpy
+flower==1.2.0
