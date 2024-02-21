@@ -21,6 +21,8 @@ services:
 
   database:
     image: postgres:14.6-alpine
+#    ports:
+#      - "5432:5432"
     environment:
       - POSTGRES_DB=dbname
       - POSTGRES_USER=dbuser
@@ -29,7 +31,6 @@ services:
   redis:
     image: redis:7.0.5-alpine
     hostname: redis
-
 
   worker:
     build:
@@ -43,6 +44,12 @@ services:
       - redis
     depends_on:
       - redis
+      - database
+    environment:
+      - DB_HOST=database
+      - DB_NAME=dbname
+      - DB_USER=dbuser
+      - DB_PASS=pass
 
   flower:
     build:

@@ -12,3 +12,12 @@ def create_instrument(ticker, name, type):
         type=type
     )
 
+def investor_pars(posts: list) -> list:
+    invs_stay = []
+    for post in posts:
+        invs_stay.append(
+            Investor.objects.get(
+            nickname=post['nickname']
+            ).values('nickname')
+        )
+    return invs_stay

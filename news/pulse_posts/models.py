@@ -31,7 +31,8 @@ class Post(models.Model):
     reactionsCount = models.PositiveIntegerField(verbose_name='Кол-во реакций')
     inserted = models.DateField(verbose_name='Дата публикации')
     text = models.TextField(verbose_name='Текст комментария')
-    investor = models.ForeignKey(Investor, on_delete=models.CASCADE, verbose_name='Инвестор')
+    instrument = models.ManyToManyField(Instrument, related_name='total_posts')
+    investor = models.ForeignKey(Investor, on_delete=models.CASCADE, related_name='my_posts',verbose_name='Инвестор')
 
     def __str__(self):
         return f'Пост автора - {self.investor.nickname} по бумаге'
@@ -40,14 +41,3 @@ class Post(models.Model):
         verbose_name = 'Пост по бумаге'
         verbose_name_plural = 'Посты по бумаге'
 
-
-class InstrumentPost(models.Model):
-    instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE, verbose_name='Бумага')
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name='Пост')
-
-    def __str__(self):
-        return f'Пост по бумаге - {self.instrument.ticker}'
-
-    class Meta:
-        verbose_name = 'Инструмент-пост'
-        verbose_name_plural = 'Инструмент-посты'
