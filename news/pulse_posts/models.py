@@ -34,8 +34,8 @@ class Post(models.Model):
     instrument = models.ManyToManyField(Instrument, related_name='total_posts')
     investor = models.ForeignKey(Investor, on_delete=models.CASCADE, related_name='my_posts',verbose_name='Инвестор')
 
-    # def __str__(self):
-    #     return self.investor.nickname
+    def __str__(self):
+        return self.text
 
     class Meta:
         verbose_name = 'Пост по бумаге'

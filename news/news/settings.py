@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'debug_toolbar',
+    'django_admin_inline_paginator',
 
     'main_news',
     'pulse_posts',
