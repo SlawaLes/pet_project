@@ -54,7 +54,7 @@ def post_update(ticker, num_posts):
                     instrument
                         for instrument in post['instruments']
                         if instrument['ticker'] not in [
-                            instr['ticket'] for instr in list_instruments_stay
+                            instr.ticker for instr in list_instruments_stay
                         ]
                 ]
 
@@ -67,7 +67,7 @@ def post_update(ticker, num_posts):
                 Instrument.objects.bulk_create(instruments_create_list)
 
                 #Привязываю пост к созданным и существующим бумагам в базе
-                post_instance.instrument.add(*instruments_create_list+list_instruments_stay)
+                post_instance[0].instrument.add(*instruments_create_list+list_instruments_stay)
 
                 # InstrumentPost.objects.update_or_create(
                 #     instrument=instrument_instance[0],
