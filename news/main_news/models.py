@@ -32,7 +32,7 @@ class RequestParamsTopLines(models.Model):
 
 class TopNews(models.Model):
     title = models.CharField(max_length=1000, verbose_name='Наименование')
-    source = models.CharField(max_length=200, verbose_name='Источник')
+    source = models.CharField(max_length=200, null=True, blank=True, verbose_name='Источник')
     author = models.CharField(max_length=200, default='Неизветный автор', verbose_name='Автор')
     topic = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name='Тема')
     #country = models.CharField(max_length=50, verbose_name='Страны')
@@ -49,7 +49,7 @@ class TopNews(models.Model):
 class TopNewsTranslated(models.Model):
     titleRus = models.CharField(max_length=1000, default='Нет перевода', verbose_name='Новость на русском')
     titleOrig = models.CharField(max_length=1000, verbose_name='Новость в оригинале')
-    source = models.CharField(max_length=200, verbose_name='Источник')
+    source = models.CharField(max_length=200, null=True, blank=True, verbose_name='Источник')
     author = models.CharField(max_length=200, default='Неизветный автор', verbose_name='Автор')
     topic = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name='Тема')
     country = models.ForeignKey(Countries, on_delete=models.CASCADE, verbose_name='Страна')
@@ -79,7 +79,7 @@ class TopNewsImages(models.Model):
     image = models.ImageField(verbose_name='Изображение', upload_to ='test_folder', default='http://127.0.0.1:8000/test_folder/harsh-taggar-asset.jpg')
     titleRus = models.CharField(max_length=1000, default='Нет перевода', verbose_name='Новость на русском')
     titleOrig = models.CharField(max_length=1000, verbose_name='Новость в оригинале')
-    source = models.CharField(max_length=200, verbose_name='Источник')
+    source = models.CharField(max_length=200, null=True, blank=True, verbose_name='Источник')
     author = models.CharField(max_length=200, default='Неизветный автор', verbose_name='Автор')
     topic = models.ForeignKey(Categories, on_delete=models.CASCADE, verbose_name='Тема')
     country = models.ForeignKey(Countries, on_delete=models.CASCADE, verbose_name='Страна')

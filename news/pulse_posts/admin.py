@@ -5,7 +5,7 @@ from django_admin_inline_paginator.admin import TabularInlinePaginated
 
 class PostInlineInstr(TabularInlinePaginated):
     model = Post.instrument.through
-    per_page = 3
+    per_page = 200
 
     def date_inline(self, obj):
         return obj.post.inserted

@@ -29,7 +29,7 @@ class Post(models.Model):
     likesCount = models.PositiveIntegerField(verbose_name='Кол-во лайков')
     commentsCount = models.PositiveIntegerField(verbose_name='Кол-во комментариев')
     reactionsCount = models.PositiveIntegerField(verbose_name='Кол-во реакций')
-    inserted = models.DateField(verbose_name='Дата публикации')
+    inserted = models.DateTimeField(verbose_name='Дата публикации')
     text = models.TextField(verbose_name='Текст комментария')
     instrument = models.ManyToManyField(Instrument, related_name='total_posts')
     investor = models.ForeignKey(Investor, on_delete=models.CASCADE, related_name='my_posts',verbose_name='Инвестор')

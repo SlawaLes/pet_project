@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+{% endblock %}
+
+{% block content%}
+
+<h1> Количество постов за даты </h1>
+{{ form.as_p }}
+<button class="button">
+<div class="text-icons">
+  <input class="div" type="submit" value="Выбрать параметры"/>
+</div>
+</button>
+{{ graph|safe }}
+
+{% endblock %}

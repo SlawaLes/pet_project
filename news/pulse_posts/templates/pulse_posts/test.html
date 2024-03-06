@@ -1,50 +1,11 @@
-{% extends "admin/base_site.html" %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 
-{% block extrastyle %}
-{{ block.super }}
-<meta name="viewport" content="initial-scale=1, width=device-width" />
-<link rel="stylesheet" type="text/css" href="{% static 'css/admin-extra_2.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/admin-extra.css' %}">
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
-/>
-{% endblock %}
-
-{% block content %}
-<!--<form class="form" method="post">-->
-<!--    {% csrf_token %}-->
-<!--    <table>-->
-<!--        {{ form.as_table }}-->
-<!--    </table>-->
-<!--    <input type="submit" value="Submit">-->
-<!--</form>-->
-<div class="frame-root">
-  <form class="form" method="post">
-    {% csrf_token %}
-    <h1 class="h1">Загрузка последних постов по тикеру</h1>
-{% for field in form %}
-    {% if field.errors %}
-    <div class="field-parent">
-      <div class="field">
-        {{ field.errors }}
-      </div>
-    </div>
-    {% endif %}
-    <div class="field-parent">
-      <div class="field">
-        <img class="ticker-icon" alt="" src="{% static 'pulse_posts/ticker.png' %}" />
-
-        {{ field }}
-      </div>
-    </div>
-{% endfor %}
-  <button class="button">
-    <div class="text-icons">
-      <input class="div" type="submit" value="Загрузить посты"/>
-    </div>
-  </button>
-  </form>
-</div>
-{% endblock %}
+{{ form }}
+</body>
+</html>
