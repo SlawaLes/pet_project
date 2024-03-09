@@ -10,8 +10,8 @@ class PostsPulse(forms.Form):
     # cc_myself = forms.BooleanField(required=False)
 
 class GraphForm(forms.Form):
-    start = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'placeholder': 'Дата начала'}))
-    ticker = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Тикер бумаги'}))
-    end = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'placeholder': 'Дата конца'}))
-    investor = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Инвестор'}))
-    is_holiday = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'check1', 'checked': '{true}'}))
+    start = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date', 'placeholder': 'Дата начала'}))
+    ticker = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'Тикер бумаги'}))
+    end = forms.DateField(required=False, widget=forms.DateInput(attrs={'type': 'date', 'placeholder': 'Дата конца'}))
+    investor = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'Инвестор'}))
+    is_holiday = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'class': 'check1', 'checked': '{true}'}))

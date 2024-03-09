@@ -1,4 +1,5 @@
 Django==4.0
+plotly==5.6.0
 requests
 newsapi-python
 newsapi
@@ -6,12 +7,11 @@ pandas
 openpyxl
 Pillow
 psycopg2-binary
-celery[resi]==5.2.7
+celery[redis]==5.2.7
 Redis
 tpulse
-httpx
+httpx==0.26.0
 numpy
 flower==1.2.0
 django-debug-toolbar
 django-admin-inline-paginator
-plotly==5.6.0

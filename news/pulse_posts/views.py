@@ -4,6 +4,9 @@ from .tasks import post_update
 from .models import Post
 import plotly.express as px
 from django.db.models import Count
+import datetime
+from pulse_posts.services.get_graph_data import get_data_form_graph
+from pulse_posts.services.get_graph import plot_graph
 
 def loadPost(request):
     if request.method == 'POST':
@@ -17,29 +20,27 @@ def loadPost(request):
         form = PostsPulse()
     return render(request, 'pulse_posts/loadPost.html', context={'form': form})
 
+
 def graphView(request):
-    form = GraphForm()
-    dt = (Post.objects.values('inserted__date')
+    dt = (Post.objects
+          .filter(inserted__date__gte=datetime.date.fromisoformat('2023-11-01'))
+          .values('inserted__date')
           .annotate(cnt=Count('id'))
           .order_by('inserted__date'))
+    context = {'base_graph': plot_graph(dt)}
 
-    fig = px.line(
-        x=[item['inserted__date'] for item in dt],
-        y=[item['cnt'] for item in dt],
-        title='Посты по всем инструментам'
-    )
+    if request.method == 'POST':
+        form = GraphForm(request.POST)
+        if form.is_valid():
+            clean_data = form.cleaned_data
+            # queryset = get_data_form_graph(clean_data)
+            filter_graph = plot_graph(get_data_form_graph(clean_data), clean_data)
+            context['form'] = form
+            if not filter_graph:
+                context['error_with_graph'] = True
+            context['filter_graph'] = filter_graph
+            return render(request, 'pulse_posts/graph_main.html', context=context)
+    else:
+        context['form'] = GraphForm()
 
-    fig.update_layout(title={
-        'font_size': 25,
-        'xanchor': 'center',
-        'x': 0.5
-    })
-
-    graph = fig.to_html()
-
-    context = {
-        'graph': graph,
-        'form': form
-    }
-
-    return render(request, 'pulse_posts/formGraphNew_test.html', context=context)
+    return render(request, 'pulse_posts/graph_main.html', context=context)

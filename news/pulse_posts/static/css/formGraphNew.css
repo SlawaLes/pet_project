@@ -194,7 +194,7 @@
 }
 .label-big1 {
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0;
 }
 .button5 {
@@ -208,7 +208,7 @@
   justify-content: center;
 }
 .check1 {
-  accent-color: #5d6afb;
+  accent-color: var(--header-bg);
   margin: 0;
   height: 14px;
   width: 14px;
@@ -250,7 +250,7 @@
   margin: 0;
   width: 861px;
   border-radius: var(--br-8xs);
-  border: 8px solid var(--color1);
+  border: 8px solid var(--header-bg);
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -258,14 +258,14 @@
   gap: var(--gap-6xl);
   max-width: 100%;
 }
-.desktop-1 {
+.desktop-1, desktop-global {
   width: 100%;
   position: relative;
   overflow: hidden;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  padding: 34px var(--padding-2xl) 528px var(--padding-xl);
+  padding: 34px var(--padding-2xl) 15px var(--padding-xl);
   letter-spacing: normal;
 }
 @media screen and (max-width: 750px) {
@@ -285,7 +285,17 @@
     box-sizing: border-box;
   }
 }
-input[type=text], input[type=date] {
+input[type=submit] {
+    position: relative;
+    font-size: var(--font-size-lg);
+    line-height: 152%;
+    font-weight: 500;
+    font-family: var(--px-regular);
+    color: var(--color-snow);
+    text-align: center;
+    background: transparent;
+}
+input[type=date] {
     border: 0;
     border-radius: 4px;
     padding: 5px 6px;
@@ -296,13 +306,34 @@ input[type=text], input[type=date] {
     font-size: 15px;
     outline: none;
 }
-input[type=submit] {
-    position: relative;
-    font-size: var(--font-size-lg);
-    line-height: 152%;
-    font-weight: 500;
+input[type=text] {
+    border: 0;
+    border-radius: 4px;
+    padding: 5px 6px;
+    margin-top: 0;
+    color: var(--body-fg);
+    background-color: transparent;
     font-family: var(--px-regular);
-    color: var(--color-snow);
-    text-align: center;
-    background: transparent;
+    font-size: 15px;
+    outline: none;
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-10xl);
+  background-color: var(--header-bg);
+  height: 80px;
+  width: 341px;
+  border-radius: var(--br-5xs);
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+svg.main-svg {
+    padding: 0px 0px 0px 20px;
+}
+desktop-global{
+  background-color: var(--color);
+  display: grid;
+  box-sizing: border-box;
 }
