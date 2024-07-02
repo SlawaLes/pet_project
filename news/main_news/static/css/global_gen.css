@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-montserrat: Montserrat;
+
+  /* font sizes */
+  --font-size-13xl: 32px;
+  --font-size-lgi: 19px;
+  --font-size-7xl: 26px;
+  --font-size-3xl-9: 18px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-lightblue: rgba(170, 202, 209, 0.28);
+  --color-teal-100: #2d7281;
+  --color-cadetblue-100: rgba(105, 160, 172, 0.28);
+  --color-black: #000;
+
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-14xl: 33px;
+  --padding-19xl: 38px;
+  --padding-mini: 15px;
+  --padding-50xl: 69px;
+  --padding-smi: 13px;
+
+  /* Border radiuses */
+  --br-6xl: 25px;
+  --br-base-8: 16.8px;
+  --br-lg-3: 18.3px;
+  --br-mid-9: 17.9px;
+}

@@ -7,6 +7,10 @@ from django.db.models import Count
 import datetime
 from pulse_posts.services.get_graph_data import get_data_form_graph
 from pulse_posts.services.get_graph import plot_graph
+from django.http import JsonResponse
+from django.http import HttpResponse
+from celery.result import AsyncResult
+import json
 
 def loadPost(request):
     if request.method == 'POST':
@@ -44,3 +48,12 @@ def graphView(request):
         context['form'] = GraphForm()
 
     return render(request, 'pulse_posts/graph_main.html', context=context)
+
+
+def get_response(request, task_id):
+    result = AsyncResult(task_id)
+    response = {
+        'status': result.state,
+        'data': result.info
+    }
+    return HttpResponse(response, content_type='application/json')

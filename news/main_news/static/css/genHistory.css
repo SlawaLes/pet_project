@@ -1,0 +1,250 @@
+.lines-icon {
+  width: 18.6px;
+  position: relative;
+  height: 18.6px;
+}
+.buttonesc {
+  border-radius: 3.57px;
+  border: 1.4px solid #265863;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 5.3px;
+}
+.imagesmall-icon {
+  width: 117.1px;
+  position: relative;
+  border-radius: 17.85px;
+  height: 117.1px;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.date,
+.name {
+  position: absolute;
+  top: 38.6px;
+  left: 0;
+  font-weight: 600;
+  display: inline-block;
+  width: 179.2px;
+  height: 29.3px;
+}
+.name{
+  font-size: 16px;
+  color: var(--color-black);
+  font-family: var(--font-montserrat);
+}
+.date {
+  top: 9.3px;
+}
+.fieldsinfo {
+  width: 211.4px;
+  position: relative;
+  height: 117.1px;
+}
+.boxgen {
+  border-radius: 17.85px;
+  background-color: var(--color-cadetblue-100);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 13.8px;
+}
+.date1,
+.name1 {
+  position: absolute;
+  top: 38.6px;
+  left: 0;
+  font-weight: 600;
+  display: inline-block;
+  width: 179.2px;
+  height: 29.3px;
+}
+.name1 {
+  top: 9.3px;
+}
+.fieldsinfo1 {
+  position: absolute;
+  top: 0;
+  left: 130.7px;
+  width: 211.4px;
+  height: 117.1px;
+}
+.boxgen1,
+.imagesmall-icon1 {
+  border-radius: 17.85px;
+  height: 117.1px;
+}
+.imagesmall-icon1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 117.1px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.boxgen1 {
+  width: 342.1px;
+  position: relative;
+  background-color: var(--color-cadetblue-100);
+}
+.date2,
+.name2 {
+  position: absolute;
+  top: 38.6px;
+  left: 0;
+  font-weight: 600;
+  display: inline-block;
+  width: 179.2px;
+  height: 29.3px;
+}
+.name2 {
+  top: 9.3px;
+}
+.fieldsinfo2 {
+  position: absolute;
+  top: 0;
+  left: 130.7px;
+  width: 211.4px;
+  height: 117.1px;
+}
+.boxgen2,
+.imagesmall-icon2 {
+  border-radius: 17.85px;
+  height: 117.1px;
+}
+.imagesmall-icon2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 117.1px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.boxgen2 {
+  width: 342.1px;
+  position: relative;
+  background-color: var(--color-cadetblue-100);
+}
+.date3,
+.name3 {
+  position: absolute;
+  top: 38.6px;
+  left: 0;
+  font-weight: 600;
+  display: inline-block;
+  width: 179.2px;
+  height: 29.3px;
+}
+.name3 {
+  top: 9.3px;
+}
+.fieldsinfo3 {
+  position: absolute;
+  top: 0;
+  left: 130.7px;
+  width: 211.4px;
+  height: 117.1px;
+}
+.boxgen3,
+.imagesmall-icon3 {
+  border-radius: 17.85px;
+  height: 117.1px;
+}
+.imagesmall-icon3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 117.1px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.boxgen3 {
+  width: 342.1px;
+  position: relative;
+  background-color: var(--color-cadetblue-100);
+}
+.date4,
+.name4 {
+  position: absolute;
+  top: 38.6px;
+  left: 0;
+  font-weight: 600;
+  display: inline-block;
+  width: 179.2px;
+  height: 29.3px;
+}
+.name4 {
+  top: 9.3px;
+}
+.fieldsinfo4 {
+  position: absolute;
+  top: 0;
+  left: 130.7px;
+  width: 211.4px;
+  height: 117.1px;
+}
+.boxgen4,
+.imagesmall-icon4 {
+  border-radius: 17.85px;
+  height: 117.1px;
+}
+.imagesmall-icon4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 117.1px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.boxgen4 {
+  width: 342.1px;
+  position: relative;
+  background-color: var(--color-cadetblue-100);
+}
+.boxes,
+.frameside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5.3px;
+  font-size: var(--font-size-3xl-9);
+  color: var(--color-black);
+  font-family: var(--font-montserrat);
+}
+.frameside {
+  position: absolute;
+  right: 3px;
+  border-radius: var(--br-6xl);
+  background-color: var(--color-lightblue);
+  border: 7px solid var(--color-teal-100);
+  padding: 13.8px 15.9px;
+  gap: 8.5px;
+}
+.desktopsideform {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-white);
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-3xl-9);
+  color: var(--color-black);
+  font-family: var(--font-montserrat);
+}
+#content {
+    padding: 20px 0px;
+}
+.inclusion {
+    position: absolute;
+    right: 10px;
+    top: 200px;
+    display: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}

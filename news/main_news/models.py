@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Countries(models.Model):
     Name = models.CharField(max_length=120, verbose_name='Страна')
@@ -91,3 +92,31 @@ class TopNewsImages(models.Model):
     class Meta:
         verbose_name = 'Новость c картинкой'
         verbose_name_plural = 'Новости с картинками'
+
+
+class ImagesGenerated(models.Model):
+    text = models.TextField(verbose_name="Описание картинки")
+    image = models.ImageField(verbose_name="Картинка", upload_to='generated', null=True, blank=True)
+    date = models.DateTimeField(verbose_name='Дата генерации', auto_now_add=True, blank=True)
+    task_id = models.CharField(verbose_name="Идентификатор картинки", max_length=255)
+    is_ready = models.BooleanField(verbose_name='Картинка сгенерирована', default=False)
+
+    def __str__(self):
+        return self.text[:35]
+
+    class Meta:
+        verbose_name = 'Картинка'
+        verbose_name_plural = 'Картинки'
+
+
+class PictureLinks(models.Model):
+    is_base = models.BooleanField(verbose_name='Базовая картинка')
+    link = models.CharField(max_length=255, verbose_name='Ссылка')
+
+    class Meta:
+        verbose_name = 'Заставка'
+        verbose_name_plural = 'Заставки'
+
+class UserPictures(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=1, verbose_name='Пользователь')
+    pictures = models.ForeignKey(ImagesGenerated, on_delete=models.CASCADE, verbose_name='Сгенерированные изображения')

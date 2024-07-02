@@ -139,6 +139,7 @@ USE_L10N = False
 USE_TZ = True
 
 DATE_FORMAT = 'd E Y'
+DATETIME_FORMAT = 'H:i - d E'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -164,6 +165,7 @@ LOGGING = {
 }
 
 CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
 
 INTERNAL_IPS = ["127.0.0.1/",]
 ip = socket.gethostbyname(socket.gethostname())

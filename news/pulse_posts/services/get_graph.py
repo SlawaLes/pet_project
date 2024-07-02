@@ -1,6 +1,7 @@
 import plotly.express as px
 from pulse_posts.services.get_graph_data import _validation_items
 
+
 default_clean = {
     'start': '',
     'end': '',
@@ -10,10 +11,14 @@ default_clean = {
 }
 
 def plot_graph(queryset, input_clean_data=default_clean):
+    import locale
+    locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
     dt = queryset
     if not dt:
         return None
     else:
+        # Можно подумать над типом времени при помощи команды
+        # .strftime('%B %d') для item['inserted__date']
         graph = px.line(
             x=[item['inserted__date'] for item in dt],
             y=[item['cnt'] for item in dt],

@@ -24,6 +24,7 @@ urlpatterns = [
     path('post/', include('pulse_posts.urls')),
     path('admin/', admin.site.urls, name=admin),
     path("__debug__/", include("debug_toolbar.urls")),
+    path('gen/', include('main_news.urls')),
 ]
 
 

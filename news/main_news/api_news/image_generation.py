@@ -35,6 +35,7 @@ class Text2ImageAPI:
             'model_id': (None, model),
             'params': (None, json.dumps(params), 'application/json')
         }
+
         response = requests.post(self.URL + 'key/api/v1/text2image/run', headers=self.AUTH_HEADERS, files=data)
         data = response.json()
         return data['uuid']
@@ -48,6 +49,11 @@ class Text2ImageAPI:
 
             attempts -= 1
             time.sleep(delay)
+
+    def check_generation_test(self, request_id, attempts=10, delay=10):
+        response = requests.get(self.URL + 'key/api/v1/text2image/status/' + request_id, headers=self.AUTH_HEADERS)
+        data = response.json()
+        return data
 
 
 

@@ -1,0 +1,148 @@
+{% extends "admin/base_site.html" %}
+
+{% load static %}
+{% load images_generated %}
+
+{% block extrastyle %}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/global_gen.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index_gen.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/genHistory.css' %}">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+  />
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+  <script src="{% static 'js/main_ext.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="desktop-form">
+  <div class="sectionMainFrame">
+    <section class="framemain">
+      <form class="formPhoto" method="post">
+          {% csrf_token %}
+          <div class="textarea">
+            {{ form.text }}
+          </div>
+          <input class="button" type="submit" value="Изобразить"/>
+      </form>
+      {% if obj.is_ready %}
+        <img
+          class="imageshort-icon"
+          loading="lazy"
+          alt=""
+          src="{{ obj.image.url }}"
+        />
+      {% else %}
+        <img
+          class="imageshort-icon"
+          loading="lazy"
+          alt=""
+          src="{{ img_back_link }}"
+        />
+      {% endif %}
+    </section>
+  </div>
+  {% get_images as historyImage %}
+  <div class="frameside">
+    <div class="buttonesc" id="hide">
+      <img class="lines-icon" alt="" src="{% static 'main_news/lines.svg' %}" />
+    </div>
+    <div class="boxes">
+    {% for img in historyImage %}
+      <div class="boxgen">
+        <img
+          class="imagesmall-icon"
+          alt=""
+          src="{{ img.image.url }}"
+        />
+
+        <div class="fieldsinfo">
+          <div class="date"><a href="{% url 'main_news:formGenerationTask' img.task_id %}" >{{ img.date }}</a></div>
+          <div class="name">{{ img.text|truncatechars:37}}</div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  <div class="inclusion">
+    <div class="buttonesc" id="show">
+      <img
+        class="lines-icon"
+        alt=""
+        src="{% static 'main_news/arrow.svg' %}"
+      />
+    </div>
+  </div>
+</div>
+  <script>
+    function MakeRequest (urlData, urlPhoto){
+        $.ajax({
+            url: urlData,
+            type: 'get',
+            success: function(response){
+                console.log(response);
+                if (response.status === "SUCCESS" || response.status === "PENDING"){
+                    var img = $('.imageshort-icon')
+                    img.fadeOut(1000)
+                    setTimeout(changeAttr, 1000, img, 'src', urlPhoto)
+
+                } else {
+                    setTimeout (MakeRequest, 3000, urlData, urlPhoto);
+                }
+            }
+        })
+      };
+
+    function changeAttr(obj, attr_key, value) {
+        obj.attr(attr_key, value);
+        return obj.fadeIn(1000)
+      };
+    function alertTest(obj) {
+        alert(obj)
+        return True
+      };
+    function changeAttrNoFade(obj, attr_key, value) {
+        obj.attr(attr_key, value);
+      };
+    function animateSlide(obj) {
+        obj.animate({"margin-left": '-=200'});
+      };
+
+  var urlPhoto = "{{ photo_url }}"
+  var urlData = "{{ task_id_url }}"
+  var status = "{{ obj.is_ready }}"
+  var divArrow = $('.inclusion')
+  if (status === "True") {
+    console.log("Статус апдейта из базы")
+    } else {
+      MakeRequest(urlData, urlPhoto);
+    }
+  $('.buttonesc').hover(
+    function(){
+        $(this).css({'border': '2.5px solid #16353c', 'background-color': 'rgba(170, 202, 209, 0.5)'});
+        $('.frameside').css('gap', '7.2px');
+      },
+    function(){
+        $(this).css({'border': '1.5px solid #265863', 'background-color': 'rgba(170, 202, 209, 0.28)'});
+        $('.frameside').css('gap', '8.5px');
+      }
+    )
+  $('#hide').on('click', function(){
+    $('.frameside').animate({"margin-right": '-=400'})
+    $('.frameside').fadeOut()
+    $('.framemain').animate({"margin-left": '+=200'})
+    setTimeout(changeAttrNoFade, 500, divArrow, 'style', 'display:block')
+  });
+  $('#show').on('click', function(){
+    setTimeout(changeAttrNoFade, 300, divArrow, 'style', 'display:none');
+    $('.frameside').fadeIn();
+    $('.frameside').animate({"margin-right": '+=400'});
+    setTimeout(animateSlide, 400, $('.framemain'));
+  });
+
+  </script>
+{% endblock %}
